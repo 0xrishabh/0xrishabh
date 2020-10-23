@@ -1,15 +1,14 @@
 # Site settings
-title:       Pixyll
+title:       0xrishabh
 email:       your_email@example.com
-author:      John Otander
-description: "A simple, beautiful theme for Jekyll that emphasizes content rather than aesthetic fluff."
+author:      0xrishabh
+description: "Blog About Building & Breaking things."
 baseurl:     ""
-url:         "http://pixyll.com"
+url:         "https://blog.0xrishabh.dev/"
 date_format: "%b %-d, %Y"
+permalink: pretty
 header_pages:
- - about.md
- - contact.html
-
+ - about
 # Google services
 google_verification:
 # Use either direct GA implementation or set up GTM account
