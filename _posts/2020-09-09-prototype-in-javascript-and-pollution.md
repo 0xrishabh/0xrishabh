@@ -21,14 +21,14 @@ Lets create an empty object and try to see if it contains any inherited method b
 Now, suppose there is an web-application which uses this code
 
 {% highlight js %}
-	secureObject={};
-	InsecureObject={};
-	userControlledInput = "" // allowed characters are (\_,A-Z,a-z,0-9)
-	eval(`InsecureObject.${userControlledInput}`)
+secureObject={};
+InsecureObject={};
+userControlledInput = "" // allowed characters are (_,A-Z,a-z,0-9)
+eval(`InsecureObject.${userControlledInput}`)
 
-	if(secureObject.admin == true){
-		pwned() // Application hacked successfully
-	}
+if(secureObject.admin == true){
+	pwned() // Application hacked successfully
+}
 {% endhighlight %}
 
 
