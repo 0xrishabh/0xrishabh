@@ -1,0 +1,13 @@
+---
+layout:     post
+title:      Everyday
+date:       2021-05-01 
+summary:    What did I learn?
+categories: blog
+---
+
+### 01/05/2021
+
+1. Read code for Flask login.
+2. Learned some open-source things
+3. Started writing this.
