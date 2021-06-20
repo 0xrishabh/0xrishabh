@@ -1,6 +1,6 @@
 ---
 title: Implementing Merkle Tree
-created: '2021-06-19'
+date: '2021-06-19'
 summary: Implementing merkle tree with audit trail generation and verification abilities in python
 --
 
