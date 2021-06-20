@@ -2,7 +2,7 @@
 title: Implementing Merkle Tree
 date: '2021-06-19'
 summary: Implementing merkle tree with audit trail generation and verification abilities in python
---
+---
 
 
 Merkle Tree is basically a tree where each node respresents a hash, And the hash of the current Node is calculated by concatenating the hashes of it's children
