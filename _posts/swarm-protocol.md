@@ -1,7 +1,7 @@
 ---
+layout: post
+date: 2019-01-26 19:22
 title: Understanding swarm-whitepaper
-created: '2021-06-19T16:09:50.389Z'
-modified: '2021-06-19T22:17:26.639Z'
 summary: Summarizing swarm whitepaper
 ---
 
