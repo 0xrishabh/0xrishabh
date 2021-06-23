@@ -13,3 +13,6 @@ generally there are only two children but theres no need of it to be that way.
 - Create leaves(Merkle Nodes) from chunks of data. 
 - divide leaves into blocks of two if total count of leaf is odd duplicate the last leaf
 - Now recursively create parents(Node) from these leaves(Node) untill there is only one parent(root) remaining.
+
+
+The source code of the implementation is open-source and can be found on [github](https://github.com/0xrishabh/alpha/tree/main/merkleTree)
