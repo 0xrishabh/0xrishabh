@@ -45,7 +45,7 @@ h1{
 	color: #eb3c68;
 	border: 0px;
 	text-shadow: none;
-	font-weight: normal;
+	font-weight: lighter;
 }
 
 body{
@@ -57,10 +57,14 @@ body{
 }
 a{
 	text-shadow: none;
+	color: #eb3c68;
+	background-image: none;
 }
 .posts .post {
 	border: none;
 }
 a:hover{
 	cursor: pointer;
+	text-shadow: none;
+	color: #fff;
 }
