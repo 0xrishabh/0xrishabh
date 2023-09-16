@@ -16,24 +16,24 @@ As it turns out, even though the zero address is an Externally Owned Account (EO
 
 {% highlight golang %}
 var (
-		msg              = st.msg
-		sender           = vm.AccountRef(msg.From)
-		rules            = st.evm.ChainConfig().Rules(st.evm.Context.BlockNumber, st.evm.Context.Random != nil, st.evm.Context.Time)
-		contractCreation = msg.To == nil
-	)
+	msg              = st.msg
+	sender           = vm.AccountRef(msg.From)
+	rules            = st.evm.ChainConfig().Rules(st.evm.Context.BlockNumber, st.evm.Context.Random != nil, st.evm.Context.Time)
+	contractCreation = msg.To == nil
+)
 {% endhighlight %}
 </li>
 <li>
 If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
 
 {% highlight golang %}
-	if contractCreation {
-		ret, _, st.gasRemaining, vmerr = st.evm.Create(sender, msg.Data, st.gasRemaining, msg.Value)
-	} else {
-		// Increment the nonce for the next transaction
-		st.state.SetNonce(msg.From, st.state.GetNonce(sender.Address())+1)
-		ret, st.gasRemaining, vmerr = st.evm.Call(sender, st.to(), msg.Data, st.gasRemaining, msg.Value)
-	}
+if contractCreation {
+	ret, _, st.gasRemaining, vmerr = st.evm.Create(sender, msg.Data, st.gasRemaining, msg.Value)
+} else {
+	// Increment the nonce for the next transaction
+	st.state.SetNonce(msg.From, st.state.GetNonce(sender.Address())+1)
+	ret, st.gasRemaining, vmerr = st.evm.Call(sender, st.to(), msg.Data, st.gasRemaining, msg.Value)
+}
 {% endhighlight %}
 </li>
 <li>
@@ -51,13 +51,13 @@ And then after a gas check, this runtime code is saved at the address that has a
 
 {% highlight golang %}
 if err == nil {
-		createDataGas := uint64(len(ret)) * params.CreateDataGas
-		if contract.UseGas(createDataGas) {
-			evm.StateDB.SetCode(address, runtimeCode)
-		} else {
-			err = ErrCodeStoreOutOfGas
-		}
+	createDataGas := uint64(len(ret)) * params.CreateDataGas
+	if contract.UseGas(createDataGas) {
+		evm.StateDB.SetCode(address, runtimeCode)
+	} else {
+		err = ErrCodeStoreOutOfGas
 	}
+}
 {% endhighlight %}
 </li>
 </ol>
