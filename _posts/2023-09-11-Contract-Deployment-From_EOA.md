@@ -65,5 +65,4 @@ if err == nil {
 
 Kaching!!, your contract is deployed.
 
-
-
+**_NOTE:_** code snippets are references from geth.
