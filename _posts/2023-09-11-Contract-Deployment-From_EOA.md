@@ -13,7 +13,7 @@ As it turns out, even though the zero address is an Externally Owned Account (EO
 
 <ol>
 <li>
-1. The function responsible for applying state checks whether the transaction is sent to the zero address. If it is, it sets the `contractCreation` value to *true*.
+1. The function responsible for applying state checks whether the transaction is sent to the zero address. If it is, it sets the <code>contractCreation</code> value to <i>true</i>.
 
 {% highlight golang %}
 var (
@@ -25,7 +25,7 @@ var (
 {% endhighlight %}
 
 </li><li>
-If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
+If the transaction is sent to the zero address (i.e., <code>contractCreation</code> is true), instead of invoking the <code>call</code> function in EVM, the <code>create</code> function is called with the <i>msg.data<i>
 
 {% highlight golang %}
 if contractCreation {
