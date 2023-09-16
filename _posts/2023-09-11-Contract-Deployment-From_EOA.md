@@ -1,11 +1,9 @@
 ---
 layout: post
-title: Internals of contract deployment from an EOA
+title: How does contract deployment works with an EOA?
 date: '2023-09-16'
 summary: Demistifying the details of contract deployment from EOA
 ---
-
-# How does contract deployment works with an EOA?
 
 I encountered this question and attempted to find an answer on the internet, but I couldn't find a straightforward explanation. Does it simply "work" like magic?
 
