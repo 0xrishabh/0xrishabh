@@ -13,18 +13,18 @@ As it turns out, even though the zero address is an Externally Owned Account (EO
 
 1. The function responsible for applying state checks whether the transaction is sent to the zero address. If it is, it sets the `contractCreation`` value to *true*.
 
-```golang
+{% highlight golang %}
 var (
 		msg              = st.msg
 		sender           = vm.AccountRef(msg.From)
 		rules            = st.evm.ChainConfig().Rules(st.evm.Context.BlockNumber, st.evm.Context.Random != nil, st.evm.Context.Time)
 		contractCreation = msg.To == nil
 	)
-```
+{% endhighlight %}
 
 2. If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
 
-```golang
+{% highlight golang %}
 	if contractCreation {
 		ret, _, st.gasRemaining, vmerr = st.evm.Create(sender, msg.Data, st.gasRemaining, msg.Value)
 	} else {
@@ -32,20 +32,20 @@ var (
 		st.state.SetNonce(msg.From, st.state.GetNonce(sender.Address())+1)
 		ret, st.gasRemaining, vmerr = st.evm.Call(sender, st.to(), msg.Data, st.gasRemaining, msg.Value)
 	}
-```
+{% endhighlight %}
 
 3. Subsequently, this bytecode is executed to obtain the runtime code.
 
-```golang
+{% highlight golang %}
 contract := NewContract(caller, AccountRef(address), value, gas)
 contract.SetCodeOptionalHash(&address, bytecode)
 runtimeCode, err := evm.interpreter.Run(contract, nil, false)
 
-```
+{% endhighlight %}
 
 4. And then after a gas check, this runtime code is saved at the address that has already been generated.
 
-```golang
+{% highlight golang %}
 if err == nil {
 		createDataGas := uint64(len(ret)) * params.CreateDataGas
 		if contract.UseGas(createDataGas) {
@@ -54,7 +54,7 @@ if err == nil {
 			err = ErrCodeStoreOutOfGas
 		}
 	}
-```
+{% endhighlight %}
 
 
 Kaching!!, your contract is deployed.
