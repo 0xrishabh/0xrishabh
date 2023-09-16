@@ -13,7 +13,7 @@ As it turns out, even though the zero address is an Externally Owned Account (EO
 
 <ol>
 <li>
-1. The function responsible for applying state checks whether the transaction is sent to the zero address. If it is, it sets the <code>contractCreation</code> value to <i>true</i>.
+The function responsible for applying a new transaction to the state, first checks whether the transaction is sent to the zero address. If it is, it sets the <code>contractCreation</code> value to <i>true</i>.
 
 {% highlight golang %}
 var (
@@ -24,7 +24,8 @@ var (
 )
 {% endhighlight %}
 
-</li><li>
+</li>
+<li>
 If the transaction is sent to the zero address (i.e., <code>contractCreation</code> is true), instead of invoking the <code>call</code> function in EVM, the <code>create</code> function is called with the <i>msg.data<i>
 
 {% highlight golang %}
@@ -36,7 +37,8 @@ if contractCreation {
 }
 {% endhighlight %}
 
-</li><li>Subsequently, this bytecode is executed to obtain the runtime code.
+</li>
+<li>Subsequently, this bytecode is executed to obtain the runtime code.
 
 {% highlight golang %}
 contract := NewContract(caller, AccountRef(address), value, gas)
@@ -45,7 +47,8 @@ runtimeCode, err := evm.interpreter.Run(contract, nil, false)
 
 {% endhighlight %}
 
-</li><li>And then after a gas check, this runtime code is saved at the address that has already been generated.
+</li>
+<li>And then after a gas check, this runtime code is saved at the address that has already been generated.
 
 {% highlight golang %}
 if err == nil {
