@@ -24,7 +24,7 @@ var (
 {% endhighlight %}
 </li>
 <li>
-2. If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
+If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
 
 {% highlight golang %}
 	if contractCreation {
@@ -37,7 +37,7 @@ var (
 {% endhighlight %}
 </li>
 <li>
-3. Subsequently, this bytecode is executed to obtain the runtime code.
+Subsequently, this bytecode is executed to obtain the runtime code.
 
 {% highlight golang %}
 contract := NewContract(caller, AccountRef(address), value, gas)
@@ -47,7 +47,7 @@ runtimeCode, err := evm.interpreter.Run(contract, nil, false)
 {% endhighlight %}
 </li>
 <li>
-4. And then after a gas check, this runtime code is saved at the address that has already been generated.
+And then after a gas check, this runtime code is saved at the address that has already been generated.
 
 {% highlight golang %}
 if err == nil {
