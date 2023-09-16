@@ -7,6 +7,10 @@ baseurl:     ""
 url:         "https://blog.0xrishabh.dev/"
 date_format: "%b %-d, %Y"
 permalink: pretty
+
+markdown: kramdown
+highlighter: rouge
+  input: GFM
 header_pages:
  - about
 # Google services
