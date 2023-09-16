@@ -22,7 +22,6 @@ var (
 	)
 ```
 
-
 2. If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
 
 ```golang
