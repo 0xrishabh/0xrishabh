@@ -11,7 +11,7 @@ To create a contract, we must send the contract's bytecode to the zero address, 
 
 As it turns out, even though the zero address is an Externally Owned Account (EOA), the nodes don't process transactions to it like they do with other EOAs.
 
-1. The function responsible for applying state checks whether the transaction is sent to the zero address. If it is, it sets the `contractCreation`` value to *true*.
+1. The function responsible for applying state checks whether the transaction is sent to the zero address. If it is, it sets the `contractCreation` value to *true*.
 
 {% highlight golang %}
 var (
@@ -21,7 +21,6 @@ var (
 		contractCreation = msg.To == nil
 	)
 {% endhighlight %}
-
 2. If the transaction is sent to the zero address (i.e., *contractCreation* is true), instead of invoking the `call` function in EVM, the `create` function is called with the *msg.data*
 
 {% highlight golang %}
@@ -33,7 +32,6 @@ var (
 		ret, st.gasRemaining, vmerr = st.evm.Call(sender, st.to(), msg.Data, st.gasRemaining, msg.Value)
 	}
 {% endhighlight %}
-
 3. Subsequently, this bytecode is executed to obtain the runtime code.
 
 {% highlight golang %}
@@ -42,7 +40,6 @@ contract.SetCodeOptionalHash(&address, bytecode)
 runtimeCode, err := evm.interpreter.Run(contract, nil, false)
 
 {% endhighlight %}
-
 4. And then after a gas check, this runtime code is saved at the address that has already been generated.
 
 {% highlight golang %}
