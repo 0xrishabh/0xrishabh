@@ -26,7 +26,7 @@ var (
 
 </li>
 <li>
-If the transaction is sent to the zero address (i.e., <code>contractCreation</code> is true), instead of invoking the <code>call</code> function in EVM, the <code>create</code> function is called with the <i>msg.data<i>
+If the transaction is sent to the zero address (i.e., <code>contractCreation</code> is true), instead of invoking the <code>call</code> function in EVM, the <code>create</code> function is called with the <i>msg.data</i>
 
 {% highlight golang %}
 if contractCreation {
